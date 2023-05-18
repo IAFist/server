@@ -1,17 +1,18 @@
 
 import { ApiModelProperty, } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
+import internal from 'stream';
 
 export class CreateUserDto {
   
   @ApiModelProperty()
   email: string;
   @ApiModelProperty()
-  password: string;
+  phone: string;
   @ApiModelProperty()
-  confirmpassword: string;
+  name: string;
   @ApiModelProperty()
-  username: string;
+  wallet_id: internal;
   @ApiModelProperty()
-  walletid: string;
+  kod: internal;
   
 }
