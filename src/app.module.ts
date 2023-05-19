@@ -1,31 +1,27 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { DataSource } from 'typeorm';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common';  
+import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { Users } from './users/model/user.model';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'De#3003#Metz',
-      database: 'ukrauto',
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      dropSchema: false,
-      synchronize: true,
-      migrationsRun: false,
-      logging: true,
-      migrations: ['dist/modules/**/db/migrations/*{.ts,.js}'],
+    ConfigModule.forRoot({
+      envFilePath: '.env'
+    }),
+    SequelizeModule.forRoot({
+      dialect: 'postgres',
+      host: process.env.POSTGRES_HOST,
+      port: Number(process.env.POSTGRES_PORT),
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB,
+      models: [Users],
+      autoLoadModels:true
     }),
     UsersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {
-  constructor(private dataSource: DataSource) {}
-}
+export class AppModule {}

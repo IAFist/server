@@ -1,48 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { Users } from './entities/user.entity';
+import { Users } from './model/user.model';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/createuser.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(Users)
-    private usersRepository: Repository<Users>,
-  ) {}
-/*
-  public create(createUserDto: CreateUserDto): Promise<User> {
-    const user: User = new User();
 
-    user.email = createUserDto.email;
-    user.password = createUserDto.password;
-    user.username = createUserDto.username;
-    user.walletid = createUserDto.walletid;
-
-
-    return this.usersRepository.save(user);
-  }
-*/
+  constructor(@InjectRepository(Users)
+    private usersRepository: typeof Users,
+  ){}
   
-  async findAll(): Promise<Users[]> {
-    return this.usersRepository.find({
-    }); //`This action returns all users`;
-  }
-  
-  async createUser(CreateUserDto: CreateUserDto): Promise<Users>{
-    const user = await this.usersRepository.create(CreateUserDto);
+  async createUser(dto: CreateUserDto): Promise<Users>{
+    const user = await this.usersRepository.create(dto);
     return user;
   }
 
-  async findOneByName(name: string): Promise<Users> {
-    return this.usersRepository.findOne({
-      where: { name: name },
-    });
-  }
-
-  async findOneById(user_index: string): Promise<Users> {
-    return this.usersRepository.findOne({
-      where: { user_index: user_index },
-    });
+  async getAllusers(): Promise<Users[]> {
+    const users = await this.usersRepository.findAll();
+    return users;
   }
 }

@@ -1,18 +1,24 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createuser.dto';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Users } from './model/user.model';
 
-@Controller('/api')
+@Controller('users')
 export class UsersController {
     constructor( private readonly usersService : UsersService) {}
 
-  @Post()
-  async CreateUser(@Body() CreateUserDto: CreateUserDto){
-    return this.usersService.createUser(CreateUserDto);
-  }
+    @ApiOperation({summary:'Створення користувача'})
+    @ApiResponse({status:200, type: Users})
+    @Post()
+    async CreateUser(@Body() userDto: CreateUserDto){
+      return this.usersService.createUser(userDto);
+    }
 
-  @Get()
-  async GetAllUsers(){
-    return this.usersService.findAll();
-  }
+    @ApiOperation({summary:'Отримування всіх користувачі'})
+    @ApiResponse({status:200, type: [Users]})
+    @Get()
+    async GetAllUsers(){
+      return this.usersService.getAllusers();
+    }
 }
