@@ -10,6 +10,7 @@ import { Users } from 'src/users/model/user.model';
     controllers: [WalletController],
     imports:[
       SequelizeModule.forFeature([Wallet, Users])
-    ]
+    ],
+    exports:[WalletService]
   })
   export class WalletModule {}

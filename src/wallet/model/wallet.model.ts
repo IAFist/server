@@ -1,7 +1,9 @@
-import {Column, DataType, HasOne, Model, Table} from "sequelize-typescript"; 
+import {BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript"; 
+import { Users } from "src/users/model/user.model";
 
   @Table({tableName:'wallet'})
   export class Wallet extends Model<Wallet>{
+    @ForeignKey(()=>Users)
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     index_wallet: number;
 
@@ -10,7 +12,4 @@ import {Column, DataType, HasOne, Model, Table} from "sequelize-typescript";
 
     @Column({type: DataType.STRING, unique: true})
     qr_code: string;
-
-    @HasOne(()=>Wallet)
-    user:Wallet;
   }

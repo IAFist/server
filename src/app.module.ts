@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';  
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
+import { WalletModule } from './wallet/wallet.module';
 import { ConfigModule } from '@nestjs/config';
 import { Users } from './users/model/user.model';
 import { Wallet } from './wallet/model/wallet.model';
@@ -21,6 +22,7 @@ import { Wallet } from './wallet/model/wallet.model';
       autoLoadModels:true
     }),
     UsersModule,
+    WalletModule,
   ],
   controllers: [],
   providers: [],

@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createuser.dto';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Users } from './model/user.model';
+import { CreateWalletDto } from 'src/wallet/dto/createwallet.dto';
 
 @Controller('users')
 export class UsersController {
@@ -11,8 +12,8 @@ export class UsersController {
     @ApiOperation({summary:'Створення користувача'})
     @ApiResponse({status:200, type: Users})
     @Post()
-    async CreateUser(@Body() userDto: CreateUserDto){
-      return this.usersService.createUser(userDto);
+    async CreateUser(@Body() userDto: CreateUserDto, walletDto: CreateWalletDto){
+      return this.usersService.createUser(userDto, walletDto);
     }
 
     @ApiOperation({summary:'Отримування всіх користувачі'})
