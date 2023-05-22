@@ -5,6 +5,10 @@ import { WalletModule } from './wallet/wallet.module';
 import { ConfigModule } from '@nestjs/config';
 import { Users } from './users/model/user.model';
 import { Wallet } from './wallet/model/wallet.model';
+import { CoordinatsModule } from './coordinats/coordinats.module';
+import { Coordinats } from './coordinats/model/coordinats.model';
+import { PlaceModule } from './place/place.module';
+import { Place } from './place/model/place.model';
 
 @Module({
   imports: [
@@ -18,11 +22,13 @@ import { Wallet } from './wallet/model/wallet.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Users, Wallet],
+      models: [Users, Wallet, Coordinats, Place],
       autoLoadModels:true
     }),
     UsersModule,
     WalletModule,
+    CoordinatsModule,
+    PlaceModule,
   ],
   controllers: [],
   providers: [],
