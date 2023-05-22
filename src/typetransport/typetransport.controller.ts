@@ -11,7 +11,7 @@ import { Typetransport } from './model/typetransport.model';
 export class TypetransportController {
     constructor( private readonly typetransportService : TypetransportService) {}
 
-    @ApiOperation({summary:'Створення користувача'})
+    @ApiOperation({summary:'Створення типу транспорта'})
     @ApiResponse({status:200, type: Typetransport})
     @Post()
     async CreateTypeTs(@Body() typetransportDto: CreateTypetransportDto, traficDto: CreateTraficDto){

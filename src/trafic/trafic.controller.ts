@@ -8,7 +8,7 @@ import { CreateTraficDto } from './dto/trafic.dto';
 export class TraficController {
     constructor( private readonly traficService : TraficService) {}
 
-    @ApiOperation({summary:'Створення гаманця'})
+    @ApiOperation({summary:'Створення трафіку'})
     @ApiResponse({status:200, type: Trafic})
     @Post()
     async CreateTrafic(@Body() traficDto: CreateTraficDto){
