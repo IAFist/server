@@ -13,5 +13,5 @@ export class WalletController {
     @Post()
     async CreateWallet(@Body() walletDto: CreateWalletDto){
       return this.walletService.createWallet(walletDto);
-    }
+    }    
 }
