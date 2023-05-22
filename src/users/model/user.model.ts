@@ -1,4 +1,5 @@
-import {Column, DataType, Model, Table} from "sequelize-typescript"; 
+import {BelongsTo, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript"; 
+import { Wallet } from "src/wallet/model/wallet.model";
 
 interface UserCreationAttrs{
   email: string;
@@ -19,7 +20,7 @@ interface UserCreationAttrs{
     @Column({type: DataType.STRING, allowNull:false})
     name: string;
   
-    @Column({type: DataType.INTEGER, unique: true, allowNull:false})
+    @ForeignKey(()=>Wallet)
     wallet_id: number;
 
     @Column({type: DataType.STRING, allowNull:false})
