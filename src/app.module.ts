@@ -9,6 +9,9 @@ import { CoordinatsModule } from './coordinats/coordinats.module';
 import { Coordinats } from './coordinats/model/coordinats.model';
 import { PlaceModule } from './place/place.module';
 import { Place } from './place/model/place.model';
+import { TraficModule } from './trafic/trafic.module';
+import { Trafic } from './trafic/model/trafic.model';
+import { TypetransportModule } from './typetransport/typetransport.module';
 
 @Module({
   imports: [
@@ -22,13 +25,15 @@ import { Place } from './place/model/place.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Users, Wallet, Coordinats, Place],
+      models: [Users, Wallet, Coordinats, Place, Trafic],
       autoLoadModels:true
     }),
     UsersModule,
     WalletModule,
     CoordinatsModule,
     PlaceModule,
+    TraficModule,
+    TypetransportModule,
   ],
   controllers: [],
   providers: [],
