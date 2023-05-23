@@ -8,7 +8,7 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 export class StanController {
     constructor( private readonly stanService : StanService) {}
 
-    @ApiOperation({summary:'Створення гаманця'})
+    @ApiOperation({summary:'Створення стану'})
     @ApiResponse({status:200, type: Stan})
     @Post()
     async CreateStan(@Body() stanDto: CreateStanDto){

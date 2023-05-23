@@ -1,5 +1,4 @@
-import { HasMany } from "sequelize";
-import {BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
+import {Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
 import { Wallet } from "src/wallet/model/wallet.model";
 
 interface UserCreationAttrs{
@@ -24,7 +23,7 @@ interface UserCreationAttrs{
     @ForeignKey(()=>Wallet)
     wallet_id: number;
 
-    @HasOne (()=>Wallet)
+    @HasOne (()=>Wallet, {onDelete: "cascade"})
     wallet:Wallet;
 
     @Column({type: DataType.STRING, allowNull:false})

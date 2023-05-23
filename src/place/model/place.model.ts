@@ -3,7 +3,7 @@ import {BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "seq
 import { Coordinats } from "src/coordinats/model/coordinats.model";
 import { Wallet } from "src/wallet/model/wallet.model";
 
-  @Table({tableName:'place'})
+  @Table({tableName:'place',timestamps: false})
   export class Place extends Model<Place>{
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     index_place: number;

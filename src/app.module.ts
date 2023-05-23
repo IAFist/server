@@ -15,6 +15,7 @@ import { TypetransportModule } from './typetransport/typetransport.module';
 import { Typetransport } from './typetransport/model/typetransport.model';
 import { StanModule } from './stan/stan.module';
 import { Stan } from './stan/model/stan.model';
+import { TransportModule } from './transport/transport.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { Stan } from './stan/model/stan.model';
     TraficModule,
     TypetransportModule,
     StanModule,
+    TransportModule,
   ],
   controllers: [],
   providers: [],
