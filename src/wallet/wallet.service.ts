@@ -14,9 +14,4 @@ export class WalletService {
     const wallet = await this.walletRepository.create(dto);
     return wallet;
   }
-
-  async GetWallet(): Promise<Wallet>{
-    const wallet = await this.walletRepository.findOne();
-    return wallet;
-  }
 }
