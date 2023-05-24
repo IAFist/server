@@ -1,5 +1,6 @@
 import {Column, DataType, HasMany,ForeignKey, Model, Table, BelongsTo} from "sequelize-typescript"; 
 import { Stan } from "src/stan/model/stan.model";
+import { Trip } from "src/trip/model/trip.model";
 import { Typetransport } from "src/typetransport/model/typetransport.model";
 
   @Table({tableName:'transport'})
@@ -29,5 +30,8 @@ import { Typetransport } from "src/typetransport/model/typetransport.model";
 
     @BelongsTo(() => Typetransport, 'type_id')
     type: Typetransport;
+
+    @HasMany(() => Trip, 'transport_id')
+    transport: Trip[];
 
   }

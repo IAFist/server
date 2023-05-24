@@ -1,4 +1,5 @@
-import {Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
+import {Column, DataType, ForeignKey, HasOne,HasMany, Model, Table} from "sequelize-typescript"; 
+import { Trip } from "src/trip/model/trip.model";
 import { Wallet } from "src/wallet/model/wallet.model";
 
 interface UserCreationAttrs{
@@ -28,4 +29,7 @@ interface UserCreationAttrs{
 
     @Column({type: DataType.STRING, allowNull:false})
     kod: string;
+
+    @HasMany(() => Trip, 'user_id')
+    user: Trip[];
   }

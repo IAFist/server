@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Transport } from './model/transport.model';
-import { StanService } from 'src/stan/stan.service';
 import { CreateTransportDto } from './dto/transport.dto';
 import { Sequelize } from 'sequelize-typescript';
 import { Stan } from 'src/stan/model/stan.model';

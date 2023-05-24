@@ -1,6 +1,6 @@
-import { HasMany } from "sequelize";
-import {BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
+import {BelongsTo, Column,HasMany, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
 import { Coordinats } from "src/coordinats/model/coordinats.model";
+import { Trip } from "src/trip/model/trip.model";
 import { Wallet } from "src/wallet/model/wallet.model";
 
   @Table({tableName:'place',timestamps: false})
@@ -16,4 +16,7 @@ import { Wallet } from "src/wallet/model/wallet.model";
 
     @HasOne (()=>Coordinats)
     coordinats: Coordinats;
+
+    @HasMany(() => Trip, 'transplace_idport_id')
+    place: Trip[];
   }

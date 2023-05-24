@@ -17,6 +17,8 @@ import { StanModule } from './stan/stan.module';
 import { Stan } from './stan/model/stan.model';
 import { TransportModule } from './transport/transport.module';
 import { Transport } from './transport/model/transport.model';
+import { TripModule } from './trip/trip.module';
+import { Trip } from './trip/model/trip.model';
 
 @Module({
   imports: [
@@ -30,7 +32,7 @@ import { Transport } from './transport/model/transport.model';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Users, Wallet, Coordinats, Place, Trafic, Typetransport,Transport, Stan],
+      models: [Users, Wallet, Coordinats, Place, Trafic, Typetransport,Transport, Stan, Trip],
       autoLoadModels:true
     }),
     UsersModule,
@@ -41,6 +43,7 @@ import { Transport } from './transport/model/transport.model';
     TypetransportModule,
     StanModule,
     TransportModule,
+    TripModule,
   ],
   controllers: [],
   providers: [],

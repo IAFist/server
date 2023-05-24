@@ -1,5 +1,3 @@
-import { Stan } from "src/stan/model/stan.model";
-
 export class CreateTransportDto {
   
     readonly qr_code: string;
