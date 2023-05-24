@@ -1,5 +1,4 @@
 import { BelongsTo, Column, DataType, ForeignKey,HasMany, HasOne, Model, Table} from "sequelize-typescript"; 
-import { Trafic } from "src/trafic/model/trafic.model";
 import { Transport } from "src/transport/model/transport.model";
 
   @Table({tableName:'type_transport', timestamps: false})
@@ -9,12 +8,8 @@ import { Transport } from "src/transport/model/transport.model";
 
     @Column({type: DataType.STRING})
     type_transport_name: string;
-
-    @ForeignKey(()=>Trafic)
-    trafic_id: number;
-
-    @HasOne (()=>Trafic)
-    trafic:Trafic;
+    @Column({type: DataType.DOUBLE})
+    price_of_1: number;
 
     @HasMany(() => Transport, 'type_id')
     transports: Transport[];
