@@ -12,9 +12,8 @@ import { TripModule } from 'src/trip/trip.module';
   controllers: [PlaceController],
   providers: [PlaceService],
   imports:[
-    SequelizeModule.forFeature([Place, Coordinats, Trip]),
-    CoordinatsModule,
-    TripModule
+    SequelizeModule.forFeature([Place, Coordinats]),
+    CoordinatsModule
   ]
 })
 export class PlaceModule {}

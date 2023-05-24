@@ -12,9 +12,8 @@ import { TripModule } from 'src/trip/trip.module';
     providers: [UsersService],
     controllers: [UsersController],
     imports:[
-      SequelizeModule.forFeature([Users, Wallet, Trip]),
-      WalletModule,
-      TripModule
+      SequelizeModule.forFeature([Users, Wallet]),
+      WalletModule
     ]
   })
   export class UsersModule {}

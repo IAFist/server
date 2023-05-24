@@ -43,7 +43,7 @@ import { Trip } from './trip/model/trip.model';
     TypetransportModule,
     StanModule,
     TransportModule,
-    TripModule,
+    TripModule
   ],
   controllers: [],
   providers: [],

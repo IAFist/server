@@ -20,14 +20,14 @@ export class TripService {
       if(!transport){
         throw new Error(`Айді транспорту ${dto.transport_id} не знайдено`);
       }
-      const user = await Users.findByPk( dto.user_id,{transaction:t});
-      if(!user){
-        throw new Error(`Айді користувача ${dto.user_id} не знайдено`);
-      }
-      const place = await Place.findByPk( dto.place_id,{transaction:t});
-      if(!place){
-        throw new Error(`Айді місця ${dto.place_id} не знайдено`);
-      }
+      // const user = await Users.findByPk( dto.user_id,{transaction:t});
+      // if(!user){
+      //   throw new Error(`Айді користувача ${dto.user_id} не знайдено`);
+      // }
+      // const place = await Place.findByPk( dto.place_id,{transaction:t});
+      // if(!place){
+      //   throw new Error(`Айді місця ${dto.place_id} не знайдено`);
+      // }
       const trip = await this.tripRepository.create(dto, {transaction:t});
       await trip.$set('transport', transport, {transaction:t});
       //await trip.$set('user', user, {transaction:t});

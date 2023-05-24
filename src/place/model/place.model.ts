@@ -17,6 +17,6 @@ import { Wallet } from "src/wallet/model/wallet.model";
     @HasOne (()=>Coordinats)
     coordinats: Coordinats;
 
-    @HasMany(() => Trip, 'transplace_idport_id')
+    @HasMany(() => Trip, 'place_id')
     place: Trip[];
   }

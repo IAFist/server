@@ -3,6 +3,7 @@ import { TraficController } from './trafic.controller';
 import { TraficService } from './trafic.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Trafic } from './model/trafic.model';
+import { Typetransport } from 'src/typetransport/model/typetransport.model';
 
 @Module({
   controllers: [TraficController],
