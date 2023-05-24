@@ -1,4 +1,4 @@
-import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript"; 
+import { BelongsTo, Column, DataType, ForeignKey,HasMany, HasOne, Model, Table} from "sequelize-typescript"; 
 import { Trafic } from "src/trafic/model/trafic.model";
 import { Transport } from "src/transport/model/transport.model";
 
@@ -15,4 +15,7 @@ import { Transport } from "src/transport/model/transport.model";
 
     @HasOne (()=>Trafic)
     trafic:Trafic;
+
+    @HasMany(() => Transport, 'type_id')
+    transports: Transport[];
   }

@@ -1,5 +1,6 @@
-import {Column, DataType, HasMany,ForeignKey, Model, Table} from "sequelize-typescript"; 
+import {Column, DataType, HasMany,ForeignKey, Model, Table, BelongsTo} from "sequelize-typescript"; 
 import { Stan } from "src/stan/model/stan.model";
+import { Typetransport } from "src/typetransport/model/typetransport.model";
 
   @Table({tableName:'transport'})
   export class Transport extends Model<Transport>{
@@ -15,10 +16,18 @@ import { Stan } from "src/stan/model/stan.model";
     @Column({type: DataType.DOUBLE, allowNull:false})
     corY: number;
 
-    @ForeignKey(()=>Stan)
-    @Column({type: DataType.INTEGER, allowNull:false})
+    @ForeignKey(() => Stan)
+    @Column
     stan_id:number;
 
-    @HasMany(() => Stan)
-    stan:Stan;
+    @BelongsTo(() => Stan, 'stan_id')
+    stan: Stan;
+
+    @ForeignKey(() => Typetransport)
+    @Column
+    type_id:number;
+
+    @BelongsTo(() => Typetransport, 'type_id')
+    type: Typetransport;
+
   }
