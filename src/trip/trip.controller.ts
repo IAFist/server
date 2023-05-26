@@ -11,8 +11,8 @@ export class TripController {
     @ApiOperation({summary:'Створення подорожі'})
     @ApiResponse({status:200, type: Trip})
     @Post()
-    async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() images){
-      return this.tripService.createTrip(tripDto, images);
+    async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() foto){
+      return this.tripService.createTrip(tripDto, foto);
     }
 
     @ApiOperation({summary:'Отримування всіх подорожів'})

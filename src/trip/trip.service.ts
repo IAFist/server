@@ -14,7 +14,7 @@ export class TripService {
     private tripRepository: typeof Trip, private sequelize: Sequelize, private filesService:FilesService
   ){}
   
-  async createTrip(dto: CreateTripDto, images: any): Promise<Trip>{
+  async createTrip(dto: CreateTripDto, foto: any): Promise<Trip>{
     const t = await this.sequelize.transaction();
     try{
       const transport = await Transport.findByPk( dto.transport_id,{transaction:t});
@@ -29,8 +29,8 @@ export class TripService {
       if(!place){
         throw new Error(`Айді місця ${dto.place_id} не знайдено`);
       }
-      const fileName = await this.filesService.createFile(images);
-      const trip = await this.tripRepository.create(dto, {transaction:t, images:fileName});
+      const fileName = await this.filesService.createFile(foto);
+      const trip = await this.tripRepository.create(dto, {transaction:t, foto:fileName});
       await trip.$set('transport', transport, {transaction:t});
       await trip.$set('user', user, {transaction:t});
       await trip.$set('place', place, {transaction:t});
