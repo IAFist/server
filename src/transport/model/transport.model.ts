@@ -17,15 +17,18 @@ import { Typetransport } from "src/typetransport/model/typetransport.model";
     @Column({type: DataType.DOUBLE, allowNull:false})
     corY: number;
 
+    @Column({type: DataType.DOUBLE, allowNull:false})
+    battery: number;
+
     @ForeignKey(() => Stan)
-    @Column
+    @Column({type: DataType.INTEGER, allowNull:false})
     stan_id:number;
 
     @BelongsTo(() => Stan, 'stan_id')
     stan: Stan;
 
     @ForeignKey(() => Typetransport)
-    @Column
+    @Column({type: DataType.INTEGER, allowNull:false})
     type_id:number;
 
     @BelongsTo(() => Typetransport, 'type_id')

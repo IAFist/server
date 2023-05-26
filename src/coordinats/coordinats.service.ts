@@ -21,5 +21,5 @@ export class CoordinatsService {
         await t.rollback();
         throw error;
       }
-  }
+    }
 }

@@ -12,6 +12,7 @@ import { Wallet } from "src/wallet/model/wallet.model";
     city: string;
 
     @ForeignKey(()=>Coordinats)
+    @Column({type: DataType.INTEGER, allowNull:false})
     coordinats_id: number;
 
     @HasOne (()=>Coordinats)

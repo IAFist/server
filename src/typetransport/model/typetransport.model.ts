@@ -6,9 +6,10 @@ import { Transport } from "src/transport/model/transport.model";
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     index_type_transport: number;
 
-    @Column({type: DataType.STRING})
+    @Column({type: DataType.STRING, allowNull:false})
     type_transport_name: string;
-    @Column({type: DataType.DOUBLE})
+
+    @Column({type: DataType.DOUBLE, allowNull:false})
     price_of_1: number;
 
     @HasMany(() => Transport, 'type_id')

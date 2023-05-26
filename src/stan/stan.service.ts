@@ -11,9 +11,6 @@ export class StanService {
   ){}
   
   async createStan(dto: CreateStanDto): Promise<Stan>{
-    // const stan = await this.stanRepository.create(dto);
-    // return stan;
-
     const t = await this.sequelize.transaction();
       try{
         const stan = await this.stanRepository.create(dto);

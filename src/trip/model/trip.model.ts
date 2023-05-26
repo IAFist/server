@@ -9,21 +9,21 @@ import { Users } from "src/users/model/user.model";
     index_trip: number;
     
     @ForeignKey(() => Transport)
-    @Column({type: DataType.INTEGER})
+    @Column({type: DataType.INTEGER, allowNull:false})
     transport_id:number;
 
     @BelongsTo(() => Transport, 'transport_id')
     transport: Transport;
 
     @ForeignKey(() => Users)
-    @Column({type: DataType.INTEGER})
+    @Column({type: DataType.INTEGER, allowNull:false})
     user_id:number;
 
     @BelongsTo(() => Users, 'user_id')
     user: Users;
 
     @ForeignKey(() => Place)
-    @Column({type: DataType.INTEGER})
+    @Column({type: DataType.INTEGER, allowNull:false})
     place_id:number;
 
     @BelongsTo(() => Place, 'place_id')
@@ -35,12 +35,12 @@ import { Users } from "src/users/model/user.model";
     @Column({ type: "timestamp"})
     time_end: Date;
 
-    @Column({type: DataType.FLOAT})
+    @Column({type: DataType.FLOAT, allowNull:false})
     duration: number;
 
-    @Column({type: DataType.FLOAT})
+    @Column({type: DataType.FLOAT, allowNull:false})
     cost: number;
 
-    @Column({type: DataType.STRING})
+    @Column({type: DataType.STRING, allowNull:false})
     foto: string;
   }

@@ -5,6 +5,7 @@ import { CreateTransportDto } from './dto/transport.dto';
 import { Sequelize } from 'sequelize-typescript';
 import { Stan } from 'src/stan/model/stan.model';
 import { Typetransport } from 'src/typetransport/model/typetransport.model';
+import { UpdateTransportDto } from './dto/updatetransport.dto';
 
 @Injectable()
 export class TransportService {
@@ -37,5 +38,20 @@ export class TransportService {
   async getAlltransports(): Promise<Transport[]> {
     const transports = await this.transportRepository.findAll({include:{all:true}});
     return transports;
+  }
+
+  async updateTransport(id: number, updateTransportDto: UpdateTransportDto): Promise<Transport> {
+    await this.transportRepository.update({
+        corX:updateTransportDto.corX,
+        corY:updateTransportDto.corY,
+        battery:updateTransportDto.battery,
+        stan_id:updateTransportDto.stan_id
+      },{
+        where:{transport_index:id}
+    });
+    const updatedTransport = await this.transportRepository.findOne({
+      where: { transport_index: id }
+    });
+    return updatedTransport;
   }
 }

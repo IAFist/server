@@ -1,9 +1,17 @@
+import { ApiModelProperty, } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
 export class CreateTransportDto {
   
-    readonly qr_code: string;
-    readonly corX: number;
-    readonly corY: number;
-    readonly stan_id: number;
-    readonly type_id: number;
+    @ApiModelProperty()
+    qr_code: string;
+    @ApiModelProperty()
+    corX: number;
+    @ApiModelProperty()
+    corY: number;
+    @ApiModelProperty()
+    battery: number;
+    @ApiModelProperty()
+    stan_id: number;
+    @ApiModelProperty()
+    type_id: number;
   }
   
