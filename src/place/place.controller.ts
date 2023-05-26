@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Delete, Param, Post } from '@nestjs/common';
 import { PlaceService } from './place.service';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Place } from './model/place.model';
@@ -21,5 +21,11 @@ export class PlaceController {
     @Get()
     async GetAllPlaces(){
       return this.placeService.getAllplaces();
+    }
+
+    @ApiOperation({summary:'Видалення міст'})
+    @Delete(':id')
+    async DeletePlaces(@Param('id') id: number){
+      return this.placeService.deleteplace(id);
     }
 }

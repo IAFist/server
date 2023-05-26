@@ -10,6 +10,6 @@ import { Users } from "src/users/model/user.model";
     @Column({type: DataType.DOUBLE, defaultValue:0})
     balance: number;
 
-    @Column({type: DataType.STRING, unique: true, allowNull:false})
+    @Column({type: DataType.STRING, unique: true})
     qr_code: string;
   }

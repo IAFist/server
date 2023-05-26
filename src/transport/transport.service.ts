@@ -54,4 +54,12 @@ export class TransportService {
     });
     return updatedTransport;
   }
+
+  async deletetransport(id:number): Promise<Transport>{
+    await this.transportRepository.destroy({where:{transport_index:id}});
+    const place = await this.transportRepository.findOne({
+      where: { transport_index: id }
+    });
+    return place;
+  }
 }

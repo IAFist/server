@@ -30,4 +30,12 @@ export class PlaceService {
     const place = await this.placeRepository.findAll({include:{all:true}});
     return place;
   }
+
+  async deleteplace(id:number): Promise<Place>{
+    await this.placeRepository.destroy({where:{index_place:id}});
+    const place = await this.placeRepository.findOne({
+      where: { index_place: id }
+    });
+    return place;
+  }
 }

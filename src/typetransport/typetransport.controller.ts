@@ -15,4 +15,11 @@ export class TypetransportController {
     async CreateTypeTs(@Body() typetransportDto: CreateTypetransportDto){
       return this.typetransportService.createTypeTs(typetransportDto);
     }
+
+    @ApiOperation({summary:'Отримування списку типів'})
+    @ApiResponse({status:200, type: [Typetransport]})
+    @Get()
+    async GetAllTypes(){
+      return this.typetransportService.getAlltypes();
+    }
 }

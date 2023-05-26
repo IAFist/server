@@ -21,4 +21,9 @@ export class TypetransportService {
         throw error;
       }
   }
+
+  async getAlltypes(): Promise<Typetransport[]> {
+    const typets = await this.typetransportRepository.findAll();
+    return typets;
+  }
 }

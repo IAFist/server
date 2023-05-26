@@ -22,7 +22,6 @@ interface UserCreationAttrs{
     name: string;
   
     @ForeignKey(()=>Wallet)
-    @Column({type: DataType.INTEGER, allowNull:false})
     wallet_id: number;
 
     @HasOne (()=>Wallet, {onDelete: "cascade"})

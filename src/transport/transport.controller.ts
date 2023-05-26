@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Delete, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Transport } from './model/transport.model';
 import { CreateTransportDto } from './dto/transport.dto';
@@ -28,5 +28,11 @@ export class TransportController {
     @Put(':id')
     async updateTransport(@Param('id') id: number , @Body() updateTransportDto: UpdateTransportDto){
       return this.transportService.updateTransport(id, updateTransportDto);
+    }
+
+    @ApiOperation({summary:'Видалення міст'})
+    @Delete(':id')
+    async DeletePlaces(@Param('id') id: number){
+      return this.transportService.deletetransport(id);
     }
 }
