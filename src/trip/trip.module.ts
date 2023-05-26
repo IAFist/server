@@ -9,6 +9,7 @@ import { PlaceModule } from 'src/place/place.module';
 import { Users } from 'src/users/model/user.model';
 import { UsersModule } from 'src/users/users.module';
 import { Trip } from './model/trip.model';
+import { FilesModule } from 'src/files/files.module';
 
 @Module({
   controllers: [TripController],
@@ -17,7 +18,8 @@ import { Trip } from './model/trip.model';
     SequelizeModule.forFeature([Trip, Transport, Place, Users]),
     TransportModule,
     PlaceModule,
-    UsersModule
+    UsersModule,
+    FilesModule
   ]
 })
 export class TripModule {}

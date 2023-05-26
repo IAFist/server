@@ -6,14 +6,15 @@ import { CreateTripDto } from './dto/trip.dto';
 import { Transport } from 'src/transport/model/transport.model';
 import { Users } from 'src/users/model/user.model';
 import { Place } from 'src/place/model/place.model';
+import { FilesService } from 'src/files/files.service';
 
 @Injectable()
 export class TripService {
     constructor(@InjectRepository(Trip)
-    private tripRepository: typeof Trip, private sequelize: Sequelize
+    private tripRepository: typeof Trip, private sequelize: Sequelize, private filesService:FilesService
   ){}
   
-  async createTrip(dto: CreateTripDto): Promise<Trip>{
+  async createTrip(dto: CreateTripDto, images: any): Promise<Trip>{
     const t = await this.sequelize.transaction();
     try{
       const transport = await Transport.findByPk( dto.transport_id,{transaction:t});
@@ -28,7 +29,8 @@ export class TripService {
       if(!place){
         throw new Error(`Айді місця ${dto.place_id} не знайдено`);
       }
-      const trip = await this.tripRepository.create(dto, {transaction:t});
+      const fileName = await this.filesService.createFile(images);
+      const trip = await this.tripRepository.create(dto, {transaction:t, images:fileName});
       await trip.$set('transport', transport, {transaction:t});
       await trip.$set('user', user, {transaction:t});
       await trip.$set('place', place, {transaction:t});

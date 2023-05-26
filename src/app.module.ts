@@ -17,6 +17,7 @@ import { TransportModule } from './transport/transport.module';
 import { Transport } from './transport/model/transport.model';
 import { TripModule } from './trip/trip.module';
 import { Trip } from './trip/model/trip.model';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -40,7 +41,8 @@ import { Trip } from './trip/model/trip.model';
     TypetransportModule,
     StanModule,
     TransportModule,
-    TripModule
+    TripModule,
+    FilesModule
   ],
   controllers: [],
   providers: [],

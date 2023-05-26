@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TripService } from './trip.service';
 import { Trip } from './model/trip.model';
@@ -11,8 +11,8 @@ export class TripController {
     @ApiOperation({summary:'Створення подорожі'})
     @ApiResponse({status:200, type: Trip})
     @Post()
-    async CreateTrip(@Body() tripDto: CreateTripDto){
-      return this.tripService.createTrip(tripDto);
+    async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() images){
+      return this.tripService.createTrip(tripDto, images);
     }
 
     @ApiOperation({summary:'Отримування всіх подорожів'})
