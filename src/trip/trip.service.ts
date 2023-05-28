@@ -30,7 +30,7 @@ export class TripService {
         throw new Error(`Айді місця ${dto.place_id} не знайдено`);
       }
       const fileName = await this.filesService.createFile(foto);
-      const trip = await this.tripRepository.create(dto, {transaction:t, foto:fileName});
+      const trip = await this.tripRepository.create({...dto, foto:fileName},{transaction:t});
       await trip.$set('transport', transport, {transaction:t});
       await trip.$set('user', user, {transaction:t});
       await trip.$set('place', place, {transaction:t});

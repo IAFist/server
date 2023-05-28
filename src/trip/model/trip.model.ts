@@ -41,6 +41,6 @@ import { Users } from "src/users/model/user.model";
     @Column({type: DataType.FLOAT, allowNull:false})
     cost: number;
 
-    @Column({type: DataType.STRING, allowNull:false})
+    @Column({type: DataType.STRING})
     foto: string;
   }
