@@ -6,7 +6,5 @@ export class CreateUserDto {
   readonly phone: string;
   @ApiModelProperty()
   readonly name: string;
-  @ApiModelProperty()
-  readonly kod: string;
   
 }

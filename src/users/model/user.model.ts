@@ -27,7 +27,7 @@ interface UserCreationAttrs{
     @HasOne (()=>Wallet, {onDelete: "cascade"})
     wallet:Wallet;
 
-    @Column({type: DataType.STRING, allowNull:false})
+    @Column({type: DataType.STRING})
     kod: string;
 
     @HasMany(() => Trip, 'user_id')

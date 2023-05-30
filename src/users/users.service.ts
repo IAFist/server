@@ -13,6 +13,14 @@ export class UsersService {
     private usersRepository: typeof Users, private walletRepository: WalletService, private sequelize: Sequelize
   ){}
   
+  async findUserByEmail(email: string): Promise<Users> {
+    return this.usersRepository.findOne({
+      where: {
+        email,
+      },
+    });
+  }
+
   async createUser(dto: CreateUserDto, walletDto: CreateWalletDto): Promise<Users>{
     const t = await this.sequelize.transaction();
       try{
@@ -25,10 +33,6 @@ export class UsersService {
         await t.rollback();
         throw error;
       }
-    // const user = await this.usersRepository.create(dto);
-    //     const wallet = await this.walletRepository.createWallet(walletDto);
-    //     await user.$set('wallet',[wallet.index_wallet]);
-    //     return user;
   }
 
   async getAllusers(): Promise<Users[]> {
@@ -36,10 +40,19 @@ export class UsersService {
     return users;
   }
 
-  async getusersPoEmail(email:string): Promise<Users> {
-    await this.usersRepository.findOne({where:{email:email}});
+  async getusersPoEmail(email:string): Promise<boolean> {
+    const count = await this.usersRepository.count({
+      where: {
+        email,
+      },
+    });
+    return count > 0;
+  }
+
+  async getusersPoEmail2(email2:string): Promise<Users> {
+    await this.usersRepository.findOne({where:{email:email2}});
     const user = await this.usersRepository.findOne({
-      where: { email: email }
+      where: {email:email2}
     });
     return user;
   }
