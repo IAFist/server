@@ -46,4 +46,13 @@ export class TripService {
     const trips = await this.tripRepository.findAll({include:{all:true}});
     return trips;
   }
+
+  async GetTripPoUser(id:number): Promise<Trip[]>{
+    await this.tripRepository.findAll({include:{all:true}});
+    const trip = await this.tripRepository.findAll({
+      where: { user_id: id }, 
+      include:{all:true}
+    });
+    return trip;
+  }
 }

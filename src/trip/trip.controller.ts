@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TripService } from './trip.service';
 import { Trip } from './model/trip.model';
@@ -23,4 +23,11 @@ export class TripController {
     async GetAllTrips(){
       return this.tripService.getAlltrips();
     }
+
+    @ApiOperation({summary:'Отримання списку поїздок по користувачу'})
+    @ApiResponse({status:200, type: Trip})
+    @Get(':id')
+    async GetTripPoUser(@Param('id') id:number){
+      return this.tripService.GetTripPoUser(id);
+    }    
 }

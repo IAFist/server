@@ -2,6 +2,5 @@ import { ApiModelProperty, } from '@nestjs/swagger/dist/decorators/api-model-pro
 export class CreatePlaceDto {
   @ApiModelProperty()
     readonly city: string;
-    
   }
   

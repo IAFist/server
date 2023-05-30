@@ -14,25 +14,33 @@ export class UsersService {
   ){}
   
   async createUser(dto: CreateUserDto, walletDto: CreateWalletDto): Promise<Users>{
-    // const t = await this.sequelize.transaction();
-    //   try{
-    //     const user = await this.usersRepository.create(dto);
-    //     const wallet = await this.walletRepository.createWallet(walletDto);
-    //     await user.$set('wallet',[wallet.index_wallet]);
-    //     await t.commit();
-    //     return user;
-    //   }catch(error){
-    //     await t.rollback();
-    //     throw error;
-    //   }
-    const user = await this.usersRepository.create(dto);
+    const t = await this.sequelize.transaction();
+      try{
+        const user = await this.usersRepository.create(dto);
         const wallet = await this.walletRepository.createWallet(walletDto);
         await user.$set('wallet',[wallet.index_wallet]);
+        await t.commit();
         return user;
+      }catch(error){
+        await t.rollback();
+        throw error;
+      }
+    // const user = await this.usersRepository.create(dto);
+    //     const wallet = await this.walletRepository.createWallet(walletDto);
+    //     await user.$set('wallet',[wallet.index_wallet]);
+    //     return user;
   }
 
   async getAllusers(): Promise<Users[]> {
     const users = await this.usersRepository.findAll({include:{all:true}});
     return users;
+  }
+
+  async getusersPoEmail(email:string): Promise<Users> {
+    await this.usersRepository.findOne({where:{email:email}});
+    const user = await this.usersRepository.findOne({
+      where: { email: email }
+    });
+    return user;
   }
 }

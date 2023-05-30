@@ -1,9 +1,9 @@
 import { ApiModelProperty, } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
 export class CreateCoordinatsDto {
   @ApiModelProperty()
-    readonly corY_1: number;
-    @ApiModelProperty()
     readonly corX_1: number;
+    @ApiModelProperty()
+    readonly corY_1: number;
     @ApiModelProperty()
     readonly corX_2: number;
     @ApiModelProperty()
