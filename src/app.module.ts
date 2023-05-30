@@ -18,6 +18,9 @@ import { Transport } from './transport/model/transport.model';
 import { TripModule } from './trip/trip.module';
 import { Trip } from './trip/model/trip.model';
 import { FilesModule } from './files/files.module';
+import { AdminsController } from './admins/admins.controller';
+import { AdminsModule } from './admins/admins.module';
+import { Admins } from './admins/model/admins.model';
 
 @Module({
   imports: [
@@ -31,7 +34,7 @@ import { FilesModule } from './files/files.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Users, Wallet, Coordinats, Place, Typetransport,Transport, Stan, Trip],
+      models: [Users, Wallet, Coordinats, Place, Typetransport,Transport, Stan, Trip, Admins],
       autoLoadModels:true
     }),
     UsersModule,
@@ -42,9 +45,10 @@ import { FilesModule } from './files/files.module';
     StanModule,
     TransportModule,
     TripModule,
-    FilesModule
+    FilesModule,
+    AdminsModule
   ],
-  controllers: [],
+  controllers: [AdminsController],
   providers: [],
 })
 export class AppModule {}

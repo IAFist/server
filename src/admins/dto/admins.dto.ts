@@ -1,9 +1,7 @@
 import { ApiModelProperty, } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
-export class CreateUserDto {
+export class CreateAdminsDto {
   @ApiModelProperty()
   readonly email: string;
   @ApiModelProperty()
-  readonly phone: string;
-  @ApiModelProperty()
-  readonly name: string;
+  readonly password: string;
 }
