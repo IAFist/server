@@ -14,4 +14,11 @@ export class StanController {
     async CreateStan(@Body() stanDto: CreateStanDto){
       return this.stanService.createStan(stanDto);
     }
+
+    @ApiOperation({summary:'Отримування всіх міст'})
+    @ApiResponse({status:200, type: [Stan]})
+    @Get()
+    async GetAllStans(){
+      return this.stanService.getAllstans();
+    }
 }

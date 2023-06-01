@@ -7,13 +7,13 @@ export class CreateTripDto {
     @ApiModelProperty()
     readonly place_id: number;
     @ApiModelProperty()
-    readonly time_start: Date;
+    readonly time_start: string;
     @ApiModelProperty()
-    readonly time_end: Date;
+    readonly time_end: string;
     @ApiModelProperty()
-    readonly duration: number;
+    readonly duration: string;
     @ApiModelProperty()
     readonly cost: number;
-    @ApiModelProperty()
-    readonly foto:string;
+    // @ApiModelProperty()
+    // readonly foto:string;
   }

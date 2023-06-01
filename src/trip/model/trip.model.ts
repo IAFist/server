@@ -1,9 +1,10 @@
-import {Column, DataType, HasMany,ForeignKey, Model, Table, BelongsTo} from "sequelize-typescript"; 
+import {Column, DataType, ForeignKey, Model, Table, BelongsTo} from "sequelize-typescript"; 
 import { Place } from "src/place/model/place.model";
 import { Transport } from "src/transport/model/transport.model";
+import { Typetransport } from "src/typetransport/model/typetransport.model";
 import { Users } from "src/users/model/user.model";
 
-  @Table({tableName:'trip'})
+  @Table({tableName:'trip', timestamps: false})
   export class Trip extends Model<Trip>{
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     index_trip: number;
@@ -29,18 +30,18 @@ import { Users } from "src/users/model/user.model";
     @BelongsTo(() => Place, 'place_id')
     place: Place;
 
-    @Column({ type: "timestamp"})
-    time_start: Date;
+    @Column({ type: DataType.STRING})
+    time_start: string;
 
-    @Column({ type: "timestamp"})
-    time_end: Date;
+    @Column({ type: DataType.STRING})
+    time_end: string;
 
-    @Column({type: DataType.FLOAT, allowNull:false})
-    duration: number;
+    @Column({type: DataType.STRING, allowNull:false})
+    duration: string;
 
     @Column({type: DataType.FLOAT, allowNull:false})
     cost: number;
 
-    @Column({type: DataType.STRING})
-    foto: string;
+    // @Column({type: DataType.STRING})
+    // foto: string;
   }

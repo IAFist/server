@@ -21,4 +21,14 @@ export class AdminsService {
         throw error;
       }
   }
+
+  async getadminPoEmail(email:string, password:string): Promise<boolean> {
+    const count = await this.adminsRepository.count({
+      where: {
+        email,
+        password
+      },
+    });
+    return count > 0;
+  }
 }

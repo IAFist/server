@@ -23,6 +23,13 @@ export class TransportController {
       return this.transportService.getAlltransports();
     }
 
+    @ApiOperation({summary:'Отримування транспорта по id'})
+    @ApiResponse({status:200, type: [Transport]})
+    @Get(':id')
+    async getTransportPoId(@Param('id') id:number){
+      return this.transportService.getTransportPoId(id);
+    }
+
     @ApiOperation({summary:'Оновлення транспорта'})
     @ApiResponse({status:200, type: [Transport]})
     @Put(':id')

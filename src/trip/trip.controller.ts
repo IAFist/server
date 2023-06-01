@@ -12,16 +12,27 @@ export class TripController {
     @ApiOperation({summary:'Створення подорожі'})
     @ApiResponse({status:200, type: Trip})
     @Post()
-    @UseInterceptors(FileInterceptor('foto'))
-    async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() foto){
-      return this.tripService.createTrip(tripDto, foto);
+    // @UseInterceptors(FileInterceptor('foto'))
+    // async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() foto){
+    //   return this.tripService.createTrip(tripDto, foto);
+    // }
+    async CreateTrip(@Body() tripDto: CreateTripDto){
+      return this.tripService.createTrip(tripDto);
     }
+
 
     @ApiOperation({summary:'Отримування всіх подорожів'})
     @ApiResponse({status:200, type: [Trip]})
     @Get()
     async GetAllTrips(){
       return this.tripService.getAlltrips();
+    }
+
+    @ApiOperation({summary:'Отримування всіх подорожів'})
+    @ApiResponse({status:200, type: [Trip]})
+    @Get('/table')
+    async GetTableTrips(){
+      return this.tripService.gettabletrips();
     }
 
     @ApiOperation({summary:'Отримання списку поїздок по користувачу'})

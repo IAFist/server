@@ -40,6 +40,14 @@ export class TransportService {
     return transports;
   }
 
+  async getTransportPoId(id:number): Promise<Transport[]> {
+    const transports = await this.transportRepository.findAll({
+      where: { transport_index: id },
+      include:{all:true}
+    });
+    return transports;
+  }
+
   async updateTransport(id: number, updateTransportDto: UpdateTransportDto): Promise<Transport> {
     await this.transportRepository.update({
         corX:updateTransportDto.corX,

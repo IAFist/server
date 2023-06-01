@@ -18,7 +18,6 @@ import { Transport } from './transport/model/transport.model';
 import { TripModule } from './trip/trip.module';
 import { Trip } from './trip/model/trip.model';
 import { FilesModule } from './files/files.module';
-import { AdminsController } from './admins/admins.controller';
 import { AdminsModule } from './admins/admins.module';
 import { Admins } from './admins/model/admins.model';
 
@@ -48,7 +47,7 @@ import { Admins } from './admins/model/admins.model';
     FilesModule,
     AdminsModule
   ],
-  controllers: [AdminsController],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}
