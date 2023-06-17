@@ -23,7 +23,7 @@ export class StanService {
   }
 
   async getAllstans(): Promise<Stan[]> {
-    const place = await this.stanRepository.findAll({include:{all:true}});
+    const place = await this.stanRepository.findAll();
     return place;
   }
 }

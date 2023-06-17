@@ -1,9 +1,8 @@
-import { Body, Controller, Get, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post} from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { TripService } from './trip.service';
 import { Trip } from './model/trip.model';
 import { CreateTripDto } from './dto/trip.dto';
-import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('trip')
 export class TripController {
@@ -12,10 +11,6 @@ export class TripController {
     @ApiOperation({summary:'Створення подорожі'})
     @ApiResponse({status:200, type: Trip})
     @Post()
-    // @UseInterceptors(FileInterceptor('foto'))
-    // async CreateTrip(@Body() tripDto: CreateTripDto, @UploadedFile() foto){
-    //   return this.tripService.createTrip(tripDto, foto);
-    // }
     async CreateTrip(@Body() tripDto: CreateTripDto){
       return this.tripService.createTrip(tripDto);
     }
@@ -40,5 +35,12 @@ export class TripController {
     @Get(':id')
     async GetTripPoUser(@Param('id') id:number){
       return this.tripService.GetTripPoUser(id);
-    }    
+    }
+    
+    @ApiOperation({summary:'Отримання списку поїздок по користувачу'})
+    @ApiResponse({status:200, type: Trip})
+    @Get('/table/:id')
+    async GetTableTripPoUser(@Param('id') id:number){
+      return this.tripService.gettabletripsPoUser(id);
+    } 
 }

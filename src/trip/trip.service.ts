@@ -65,4 +65,11 @@ export class TripService {
     });
     return trip;
   }
+
+  async gettabletripsPoUser(id:number): Promise<any> {
+    const { QueryTypes } = require('sequelize');
+    const trips = await this.sequelize.query(`SELECT * FROM trip JOIN transport ON trip.transport_id = transport.transport_index JOIN users ON trip.user_id = users.user_index JOIN place ON trip.place_id = place.index_place JOIN type_transport ON type_transport.index_type_transport = transport.type_id WHERE users.user_index = ${id}`,
+    {type:QueryTypes.SELECT});
+    return trips;
+  }
 }
